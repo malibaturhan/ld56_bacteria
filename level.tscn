@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bblm4onflpab1"]
+[gd_scene load_steps=9 format=3 uid="uid://bblm4onflpab1"]
 
 [ext_resource type="PackedScene" uid="uid://rtvvd6jr64xd" path="res://Prefabs/Bacteria/bacteria.tscn" id="1_ps11p"]
 [ext_resource type="Script" path="res://Scripts/mouse_manager.gd" id="2_beiuc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cg26urhqkftm0" path="res://Prefabs/Bone/bone.tscn" id="6_3ptiy"]
 [ext_resource type="Script" path="res://Scripts/food_generator.gd" id="7_avh67"]
 [ext_resource type="PackedScene" uid="uid://ics3dt730oa0" path="res://Prefabs/border.tscn" id="7_ixv24"]
+[ext_resource type="PackedScene" uid="uid://c6xelq8s1e335" path="res://Prefabs/Foods/food_muscle.tscn" id="8_k4ra7"]
 
 [node name="Level" type="Node2D"]
 
@@ -76,3 +77,8 @@ scale = Vector2(1.295, 1.73)
 
 [node name="FoodGenerator" type="Node" parent="."]
 script = ExtResource("7_avh67")
+initial_food_amount = 50
+food_array = Array[PackedScene]([ExtResource("8_k4ra7")])
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 640)

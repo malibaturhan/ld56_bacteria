@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bf52mxnq8lwvn" path="res://SFX/blob.wav" id="4_fij51"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3xjc"]
-size = Vector2(26, 12)
+size = Vector2(16, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igvei"]
 atlas = ExtResource("2_8e650")
@@ -74,13 +74,13 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_l3xjc")
 
 [node name="Body" type="Sprite2D" parent="."]
-scale = Vector2(0.265625, 0.21875)
+scale = Vector2(0.15625, 0.125)
 texture = ExtResource("1_r8cww")
 
 [node name="Whip" type="AnimatedSprite2D" parent="." groups=["BACTERIA"]]
-position = Vector2(-21, -1.7053e-13)
+position = Vector2(-12, -7.10543e-12)
 rotation = -1.5708
-scale = Vector2(1, 1.19277)
+scale = Vector2(0.464291, 0.552145)
 sprite_frames = SubResource("SpriteFrames_6ua87")
 autoplay = "default"
 frame = 6
