@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://bblm4onflpab1"]
+
+[ext_resource type="PackedScene" uid="uid://rtvvd6jr64xd" path="res://Prefabs/Bacteria/bacteria.tscn" id="1_ps11p"]
+[ext_resource type="Script" path="res://Scripts/mouse_manager.gd" id="2_beiuc"]
+[ext_resource type="Script" path="res://Scripts/bacteria_parent.gd" id="2_pjwbe"]
+[ext_resource type="Script" path="res://Prefabs/GameUI/game_ui.gd" id="4_mt2yg"]
+[ext_resource type="PackedScene" uid="uid://cg26urhqkftm0" path="res://Prefabs/Bone/bone.tscn" id="6_3ptiy"]
+[ext_resource type="Script" path="res://Scripts/food_generator.gd" id="7_avh67"]
+[ext_resource type="PackedScene" uid="uid://ics3dt730oa0" path="res://Prefabs/border.tscn" id="7_ixv24"]
+
+[node name="Level" type="Node2D"]
+
+[node name="MouseManager" type="Node2D" parent="." groups=["MOUSE_MANAGER"]]
+script = ExtResource("2_beiuc")
+
+[node name="BacteriaParent" type="Node" parent="."]
+script = ExtResource("2_pjwbe")
+
+[node name="Bacteria" parent="BacteriaParent" instance=ExtResource("1_ps11p")]
+position = Vector2(544, 364)
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_mt2yg")
+
+[node name="TopBar" type="GridContainer" parent="GameUI"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 67.0
+columns = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="GameUI/TopBar"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GameUI/TopBar/HSplitContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="Label" type="Label" parent="GameUI/TopBar/HSplitContainer"]
+layout_mode = 2
+text = "3 2 1"
+
+[node name="Immun" type="Node" parent="."]
+
+[node name="Bone" parent="Immun" instance=ExtResource("6_3ptiy")]
+position = Vector2(211, 545)
+
+[node name="Bone2" parent="Immun" instance=ExtResource("6_3ptiy")]
+position = Vector2(602, 840)
+type_of_production = 1
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="Border" parent="Boundaries" instance=ExtResource("7_ixv24")]
+position = Vector2(822, 0)
+rotation = 1.5708
+scale = Vector2(1.295, 1.295)
+
+[node name="Border2" parent="Boundaries" instance=ExtResource("7_ixv24")]
+position = Vector2(806, 1292)
+rotation = 1.5708
+scale = Vector2(1.295, 1.295)
+
+[node name="Border3" parent="Boundaries" instance=ExtResource("7_ixv24")]
+position = Vector2(758, 32)
+scale = Vector2(1.295, 1.73)
+
+[node name="Border4" parent="Boundaries" instance=ExtResource("7_ixv24")]
+position = Vector2(-9.99988, 38)
+scale = Vector2(1.295, 1.73)
+
+[node name="FoodGenerator" type="Node" parent="."]
+script = ExtResource("7_avh67")

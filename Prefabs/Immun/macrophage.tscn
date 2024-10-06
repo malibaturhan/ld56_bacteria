@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://etuv2v7xnls1"]
+
+[ext_resource type="Script" path="res://Scripts/ImmunSystem.gd" id="1_nu7o2"]
+[ext_resource type="Texture2D" uid="uid://bnmp5v2rrhw6j" path="res://Sprites/macrophage.png" id="2_ntt56"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cwpb"]
+radius = 23.0868
+
+[node name="macrophage" type="CharacterBody2D"]
+script = ExtResource("1_nu7o2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ntt56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2cwpb")

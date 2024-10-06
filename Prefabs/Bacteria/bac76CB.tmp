@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://rtvvd6jr64xd"]
+
+[ext_resource type="Script" path="res://Prefabs/Bacteria/bacteria.gd" id="1_febjy"]
+[ext_resource type="Texture2D" uid="uid://tvk7hq7fl0ln" path="res://Sprites/bacteria1.png" id="1_r8cww"]
+[ext_resource type="Texture2D" uid="uid://dy2hqgm4ahdbb" path="res://Sprites/whip.png" id="2_8e650"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fexay"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igvei"]
+atlas = ExtResource("2_8e650")
+region = Rect2(0, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6cw"]
+atlas = ExtResource("2_8e650")
+region = Rect2(7, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxa1q"]
+atlas = ExtResource("2_8e650")
+region = Rect2(14, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh4mn"]
+atlas = ExtResource("2_8e650")
+region = Rect2(21, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63cle"]
+atlas = ExtResource("2_8e650")
+region = Rect2(28, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73egd"]
+atlas = ExtResource("2_8e650")
+region = Rect2(35, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2gct"]
+atlas = ExtResource("2_8e650")
+region = Rect2(42, 0, 7, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ua87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igvei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj6cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxa1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh4mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63cle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73egd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2gct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bacteria" type="CharacterBody2D"]
+script = ExtResource("1_febjy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fexay")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_r8cww")
+
+[node name="Whip" type="AnimatedSprite2D" parent="."]
+position = Vector2(-70.8125, 6.03764e-07)
+rotation = -1.5708
+scale = Vector2(1, 2.72656)
+sprite_frames = SubResource("SpriteFrames_6ua87")
+autoplay = "default"
+frame = 6
+frame_progress = 0.717553
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(115, 0)

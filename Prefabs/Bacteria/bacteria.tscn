@@ -1,0 +1,109 @@
+[gd_scene load_steps=14 format=3 uid="uid://rtvvd6jr64xd"]
+
+[ext_resource type="Script" path="res://Prefabs/Bacteria/bacteria.gd" id="1_febjy"]
+[ext_resource type="Texture2D" uid="uid://tvk7hq7fl0ln" path="res://Sprites/bacteria1.png" id="1_r8cww"]
+[ext_resource type="Texture2D" uid="uid://dy2hqgm4ahdbb" path="res://Sprites/whip.png" id="2_8e650"]
+[ext_resource type="AudioStream" uid="uid://bf52mxnq8lwvn" path="res://SFX/blob.wav" id="4_fij51"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3xjc"]
+size = Vector2(26, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igvei"]
+atlas = ExtResource("2_8e650")
+region = Rect2(0, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj6cw"]
+atlas = ExtResource("2_8e650")
+region = Rect2(7, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxa1q"]
+atlas = ExtResource("2_8e650")
+region = Rect2(14, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh4mn"]
+atlas = ExtResource("2_8e650")
+region = Rect2(21, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63cle"]
+atlas = ExtResource("2_8e650")
+region = Rect2(28, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73egd"]
+atlas = ExtResource("2_8e650")
+region = Rect2(35, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2gct"]
+atlas = ExtResource("2_8e650")
+region = Rect2(42, 0, 7, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ua87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igvei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj6cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxa1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh4mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63cle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73egd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2gct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bacteria" type="CharacterBody2D" groups=["BACTERIA"]]
+script = ExtResource("1_febjy")
+bacteria = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_l3xjc")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.265625, 0.21875)
+texture = ExtResource("1_r8cww")
+
+[node name="Whip" type="AnimatedSprite2D" parent="." groups=["BACTERIA"]]
+position = Vector2(-21, -1.7053e-13)
+rotation = -1.5708
+scale = Vector2(1, 1.19277)
+sprite_frames = SubResource("SpriteFrames_6ua87")
+autoplay = "default"
+frame = 6
+frame_progress = 0.717553
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(115, 0)
+
+[node name="HowMuchAte" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 22.0
+offset_bottom = -10.0
+text = "1/10"
+vertical_alignment = 2
+
+[node name="ProliferationTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="ProliferationSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_fij51")
+volume_db = 6.525
+attenuation = 0.129408
+bus = &"SFX"
+
+[connection signal="timeout" from="ProliferationTimer" to="." method="_on_proliferation_timer_timeout"]
