@@ -14,11 +14,11 @@
 [node name="MouseManager" type="Node2D" parent="." groups=["MOUSE_MANAGER"]]
 script = ExtResource("2_beiuc")
 
-[node name="BacteriaParent" type="Node" parent="."]
+[node name="BacteriaParent" type="Node" parent="." groups=["BACTERIA_PARENT"]]
 script = ExtResource("2_pjwbe")
 
 [node name="Bacteria" parent="BacteriaParent" instance=ExtResource("1_ps11p")]
-position = Vector2(544, 364)
+position = Vector2(337, 105)
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 3
@@ -56,28 +56,29 @@ position = Vector2(602, 840)
 type_of_production = 1
 
 [node name="Boundaries" type="Node2D" parent="."]
+position = Vector2(143, 73)
 
 [node name="Border" parent="Boundaries" instance=ExtResource("7_ixv24")]
-position = Vector2(822, 0)
+position = Vector2(609, -70)
 rotation = 1.5708
 scale = Vector2(1.295, 1.295)
 
 [node name="Border2" parent="Boundaries" instance=ExtResource("7_ixv24")]
-position = Vector2(806, 1292)
+position = Vector2(674, 1182)
 rotation = 1.5708
 scale = Vector2(1.295, 1.295)
 
 [node name="Border3" parent="Boundaries" instance=ExtResource("7_ixv24")]
-position = Vector2(758, 32)
+position = Vector2(596, -66)
 scale = Vector2(1.295, 1.73)
 
 [node name="Border4" parent="Boundaries" instance=ExtResource("7_ixv24")]
-position = Vector2(-9.99988, 38)
+position = Vector2(-147, -51)
 scale = Vector2(1.295, 1.73)
 
 [node name="FoodGenerator" type="Node" parent="."]
 script = ExtResource("7_avh67")
-initial_food_amount = 50
+initial_food_amount = 250
 food_array = Array[PackedScene]([ExtResource("8_k4ra7")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
